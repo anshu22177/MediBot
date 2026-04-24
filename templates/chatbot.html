@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %}Chatbot - Medibot{% endblock %}
+
+{% block content %}
+<div class="chatbot-container">
+    <header class="chatbot-header">
+        <h1>Medibot - Symptom Guidance</h1>
+        <div class="user-info">
+            <span>Welcome, {{ user_name }}!</span>
+            <a href="{{ url_for('logout') }}" class="btn btn-secondary">Logout</a>
+        </div>
+    </header>
+    
+    <div class="main-content-wrapper">
+        <div class="chat-container">
+            <div class="chat-messages" id="chatMessages">
+                <div class="message bot-message">
+                    <div class="message-content">
+                        <strong>Medibot:</strong> Hello! I'm here to provide educational guidance about symptoms. 
+                        Please describe your symptoms, and I'll provide general information about possible causes, 
+                        care advice, and when to consult a doctor. Remember, this is not a diagnosis.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="chat-input-container">
+                <form id="chatForm" class="chat-form">
+                    <textarea 
+                        id="userInput" 
+                        placeholder="Describe your symptoms here... (Press Enter to send, Shift+Enter for new line)" 
+                        autocomplete="off"
+                        rows="3"
+                        required
+                    ></textarea>
+                    <button type="submit" class="btn btn-send">
+                        <span class="send-icon">➤</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+        
+        <aside class="disclaimer-panel">
+            <div class="disclaimer-box">
+                <div class="disclaimer-icon">⚠️</div>
+                <strong>Important Medical Disclaimer</strong>
+                <p>This chatbot provides educational information only and does NOT provide medical diagnosis or prescriptions.</p>
+                <p>Always consult with a qualified healthcare provider for proper evaluation and treatment.</p>
+                <p class="emergency-text">If you have a medical emergency, call emergency services immediately.</p>
+            </div>
+        </aside>
+    </div>
+</div>
+
+<script src="{{ url_for('static', filename='js/chatbot.js') }}"></script>
+{% endblock %}
+
